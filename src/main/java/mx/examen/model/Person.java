@@ -1,4 +1,4 @@
-package mx.examen.entity;
+package mx.examen.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

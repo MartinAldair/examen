@@ -1,6 +1,6 @@
 package mx.examen.repository;
 
-import mx.examen.entity.Person;
+import mx.examen.model.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
