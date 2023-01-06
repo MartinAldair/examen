@@ -4,6 +4,7 @@ import io.swagger.v3.oas.models.*;
 import io.swagger.v3.oas.models.info.*;
 import io.swagger.v3.oas.models.servers.Server;
 import java.util.Arrays;
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -41,6 +42,17 @@ public class SwaggerUiConfiguration {
         return new ExternalDocumentation()
                 .description("Más información sobre el examen")
                 .url("http://examen.mx");
+    }
+
+    @Bean
+    public GroupedOpenApi apiGroup() {
+        String[] paths = {"/persona/**"};
+        String packagesToScan[] = {"mx.examen.controller"};
+        return GroupedOpenApi.builder()
+                .group("persona")
+                .packagesToScan(packagesToScan)
+                .pathsToMatch(paths)
+                .build();
     }
 
 }

@@ -4,8 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "person")
-public class Person implements Serializable {
+@Table(name = "persona")
+public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -101,7 +101,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", rfc=" + rfc + ", curp=" + curp + ", edad=" + edad + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + '}';
+        return "Persona{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", rfc=" + rfc + ", curp=" + curp + ", edad=" + edad + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + '}';
     }
 
 }

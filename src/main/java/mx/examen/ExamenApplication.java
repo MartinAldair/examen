@@ -12,7 +12,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"mx.com.example", "io.swagger"})
+@ComponentScan(basePackages = {"mx.examen", "io.swagger"})
 public class ExamenApplication implements CommandLineRunner {
 
     @Override

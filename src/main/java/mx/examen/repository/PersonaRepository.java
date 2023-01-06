@@ -1,10 +1,10 @@
 package mx.examen.repository;
 
-import mx.examen.model.Person;
+import mx.examen.model.Persona;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("personRepository")
-public interface PersonRepository extends CrudRepository<Person, Integer> {
+@Repository("personaRepository")
+public interface PersonaRepository extends CrudRepository<Persona, Integer> {
 
 }
