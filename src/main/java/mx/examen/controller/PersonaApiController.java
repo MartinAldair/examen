@@ -30,6 +30,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -67,4 +68,20 @@ public class PersonaApiController implements PersonaApi {
         return new ResponseEntity<Persona>(HttpStatus.OK);
     }
 
+    @Override
+    public ResponseEntity<List<Persona>> obtieneTodasLasPersonas() {
+        String accept = request.getHeader("Accept");
+        List<Persona> response = new ArrayList<>();
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                String json = this.objectMapper.writeValueAsString(response);
+                return new ResponseEntity<List<Persona>>(this.objectMapper.readValue(json, List.class), HttpStatus.OK);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<List<Persona>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<List<Persona>>(HttpStatus.NOT_IMPLEMENTED);
+    }
 }

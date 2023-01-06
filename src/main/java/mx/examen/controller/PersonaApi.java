@@ -48,5 +48,15 @@ public interface PersonaApi {
         method = RequestMethod.GET)
     ResponseEntity<Persona> obtienePersonaPorId(@Parameter(in = ParameterIn.PATH, description = "El Id de persona retorna", required=true, schema=@Schema()) @PathVariable("personaId") Integer personaId);
 
+    @Operation(summary = "Encuentra todas las personas", description = "Se obtiene todas las personas mediante una lista", tags={ "persona" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Operación exitosa", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Persona.class)))),
+        
+        @ApiResponse(responseCode = "404", description = "Personas no encontradas") })
+    @RequestMapping(value = "/persona",
+        produces = { "application/json", "application/xml" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Persona>> obtieneTodasLasPersonas();
+
 }
 
