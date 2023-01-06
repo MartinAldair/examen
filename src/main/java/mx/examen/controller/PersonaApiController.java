@@ -1,7 +1,7 @@
 package mx.examen.controller;
 
-import io.swagger.model.Persona;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.model.Persona;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,7 @@ import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-06T19:40:43.392Z[GMT]")
 @RestController
+@Tag(name = "persona", description = "Acceso a los datos de la Persona")
 public class PersonaApiController implements PersonaApi {
 
     private static final Logger log = LoggerFactory.getLogger(PersonaApiController.class);
@@ -48,18 +50,21 @@ public class PersonaApiController implements PersonaApi {
         this.request = request;
     }
 
-    public ResponseEntity<Persona> obtienePersonaPorId(@Parameter(in = ParameterIn.PATH, description = "El Id de persona retorna", required=true, schema=@Schema()) @PathVariable("personaId") Integer personaId) {
+    @Override
+    public ResponseEntity<Persona> obtienePersonaPorId(@Parameter(in = ParameterIn.PATH, description = "El Id de persona retorna", required = true, schema = @Schema()) @PathVariable("personaId") Integer personaId) {
         String accept = request.getHeader("Accept");
+        Persona response = new Persona();
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Persona>(objectMapper.readValue("{\n  \"apellidos\" : \"apellidos\",\n  \"id\" : 0,\n  \"sexo\" : \"sexo\",\n  \"nombre\" : \"nombre\",\n  \"edad\" : 6,\n  \"rfc\" : \"rfc\",\n  \"curp\" : \"curp\",\n  \"nacionalidad\" : \"nacionalidad\"\n}", Persona.class), HttpStatus.NOT_IMPLEMENTED);
+                log.info("" + personaId);
+                String json = this.objectMapper.writeValueAsString(response);
+                return new ResponseEntity<Persona>(this.objectMapper.readValue(json, Persona.class), HttpStatus.OK);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Persona>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-
-        return new ResponseEntity<Persona>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Persona>(HttpStatus.OK);
     }
 
 }
