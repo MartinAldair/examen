@@ -27,7 +27,7 @@ public class Person implements Serializable {
     private String curp;
 
     @Column(name = "edad")
-    private String edad;
+    private Integer edad;
 
     @Column(name = "sexo")
     private String sexo;
@@ -75,11 +75,11 @@ public class Person implements Serializable {
         this.curp = curp;
     }
 
-    public String getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
