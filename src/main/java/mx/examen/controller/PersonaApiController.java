@@ -62,9 +62,21 @@ public class PersonaApiController implements PersonaApi {
         Persona response = new Persona();
         if (accept != null && accept.contains("application/json")) {
             try {
-                log.info("" + personaId);
-                String json = this.objectMapper.writeValueAsString(response);
-                return new ResponseEntity<Persona>(this.objectMapper.readValue(json, Persona.class), HttpStatus.OK);
+                mx.examen.model.Persona persona = this.personaServiceImpl.encontrarPersonaPorId(personaId);
+                if (persona == null) {
+                    return new ResponseEntity<Persona>(HttpStatus.NOT_FOUND);
+                } else {
+                    response.setId(persona.getId());
+                    response.setNombre(persona.getNombre());
+                    response.setApellidos(persona.getApellidos());
+                    response.setRfc(persona.getRfc());
+                    response.setCurp(persona.getCurp());
+                    response.setEdad(persona.getEdad());
+                    response.setSexo(persona.getSexo());
+                    response.setNacionalidad(persona.getNacionalidad());
+                    String json = this.objectMapper.writeValueAsString(response);
+                    return new ResponseEntity<Persona>(this.objectMapper.readValue(json, Persona.class), HttpStatus.OK);
+                }
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Persona>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -77,13 +89,13 @@ public class PersonaApiController implements PersonaApi {
     public ResponseEntity<List<Persona>> obtieneTodasLasPersonas() {
         String accept = request.getHeader("Accept");
         List<Persona> response = new ArrayList<>();
+        Persona personaResponse = new Persona();
         if (accept != null && accept.contains("application/json")) {
             try {
                 List<mx.examen.model.Persona> listaDeUsuarios = this.personaServiceImpl.encontrarTodasLasPersonas();
                 List<Persona> listaDeUsuariosResponse = listaDeUsuarios
                         .stream()
                         .map(elemento -> {
-                            Persona personaResponse = new Persona();
                             personaResponse.setId(elemento.getId());
                             personaResponse.setNombre(elemento.getNombre());
                             personaResponse.setApellidos(elemento.getApellidos());

@@ -32,4 +32,10 @@ public class PersonaDaoImpl implements PersonaDao {
         return generarListaDePersonas();
     }
 
+    @Override
+    public Persona encontrarPersonaPorId(Integer id) {
+        Persona persona = generarListaDePersonas().stream().filter(elemento -> elemento.getId().equals(id)).findAny().orElse(null);
+        return persona;
+    }
+
 }

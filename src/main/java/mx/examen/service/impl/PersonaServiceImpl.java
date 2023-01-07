@@ -11,24 +11,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service("personaServiceImpl")
 public class PersonaServiceImpl implements PersonaService {
-
+    
     private static final Logger log = LoggerFactory.getLogger(PersonaServiceImpl.class);
-
+    
     @Autowired
     private PersonaDaoImpl personaDaoImpl;
-
-    /*
+    
     @Override
     public Persona encontrarPersonaPorId(Integer id) {
-        log.info("Método para buscar una persona por id que se encuentran en la base de datos");
-        return this.personaRepository.findById(id).get();
+        log.info("Método para buscar una persona por id que se encuentran en la "
+                + "capa DAO donde se simula la recuperación de la información");
+        return this.personaDaoImpl.encontrarPersonaPorId(id);
     }
-     */
+    
     @Override
     public List<Persona> encontrarTodasLasPersonas() {
-        log.info("Método para obtener una lista de todas las personas que se encuentran en la capa DAO donde se simula la recuperación de la información");
+        log.info("Método para obtener una lista de todas las personas que se encuentran en la "
+                + "capa DAO donde se simula la recuperación de la información");
         List<Persona> listaDeUsuarios = (List<Persona>) this.personaDaoImpl.encontrarTodasLasPersonas();
         return listaDeUsuarios;
     }
-
+    
 }

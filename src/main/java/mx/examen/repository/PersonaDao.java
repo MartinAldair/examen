@@ -7,4 +7,6 @@ public interface PersonaDao {
 
     public List<Persona> encontrarTodasLasPersonas();
 
+    public Persona encontrarPersonaPorId(Integer id);
+
 }
