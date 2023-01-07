@@ -1,5 +1,7 @@
 package mx.examen;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
@@ -37,13 +39,43 @@ class ExamenApplicationTests {
     String text1 = "test 5 a0A pass007 ?xy1";
     String text2 = "bd 35 Bbdfh135";
 
+    /*
+    Como input debe recibir una cadena S de N caracteres.  La cadena S se puede 
+    dividir en palabras dividiéndola y eliminando los espacios. El objetivo es 
+    elegir la palabra más larga que sea una contraseña válida. Puede suponer que, 
+    si hay K espacios en la cadena S, entonces hay exactamente K + 1 palabras.
+    
+    Por ejemplo, dado "test 5 a0A pass007 ?xy1", hay cinco palabras y tres de 
+    ellas son contraseñas válidas: "5", "a0A" y "pass007". Por lo tanto, la 
+    contraseña más larga es "pass007" y su longitud es 7.
+    
+    Genera una clase que, dada una cadena S no vacía que consta de N caracteres, 
+    devuelve la longitud de la palabra más larga de la cadena que es una contraseña válida. 
+    Si no existe tal palabra, su función debería devolver −1, como se explicó anteriormente.
+    
+Asumir que:
+
+N es un número entero dentro del rango [1..200];
+La cadena S consta únicamente de caracteres y espacios ASCII imprimibles.
+
+     */
     @Test
     void ejercicio3() {
-
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(text2);
-        boolean b = m.matches();
-        log.info("" + b);
+        Boolean b = m.matches();
+        if (!b) {
+            log.info("La contraseña no cumple con el patron de requisitos para ser valida" + b);
+        } else {
+            String[] password = m.group().split(" ");
+            String longestPassword = Arrays.asList(password).stream().max(Comparator.comparingInt(String::length)).get();
+            Integer passwordLeght = longestPassword.length() > 0 ? 0 : -1;
+            if (passwordLeght.equals(0)) {
+                log.info("Contraseña: " + longestPassword);
+            } else {
+                log.info("Contraseña invalida");
+            }
+        }
     }
 
     /*
