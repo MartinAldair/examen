@@ -131,7 +131,7 @@ class ExamenApplicationTests {
         String fechaFormatoCorrecto = "01/07/2023 12:04:59";
         String fechaFormatoIncorrecto = "a";
         String nuevoFormatoDeFecha = "MM/dd/yyyy";
-//        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
+        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
 
 }

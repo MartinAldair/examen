@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Examen - OpenAPI 3.0
+  description: |-
+    Este es una Api basado en la especificación OpenAPI 3.0. Se Puede obtener más información sobre la API en [https://examen.mx](https://examen.mx).
+  termsOfService: http://examen.mx/terms/
+  contact:
+    email: examen@mail.mx
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.01
+externalDocs:
+  description: Más información sobre el examen
+  url: http://examen.mx
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: persona
+    description: Acceso a los datos de una persona
+    externalDocs:
+      description: Obtenga más información sobre nuestra API
+      url: http://swagger.io
+paths:
+  /persona/{personaId}:
+    get:
+      tags:
+        - persona
+      summary: Encuentra una persona por ID
+      description: Retorna solamente una persona
+      operationId: obtienePersonaPorId
+      parameters:
+        - name: personaId
+          in: path
+          description: El Id de persona retorna
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Persona'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Persona'
+        '400':
+          description: Id Invalido
+        '404':
+          description: Persona no encontrada
+  /persona:
+    get:
+      tags:
+        - persona
+      summary: Encuentra todas las personas
+      description: Se obtiene todas las personas mediante una lista
+      operationId: obtieneTodasLasPersonas
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Persona'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Persona'
+        '404':
+          description: Personas no encontradas
+components:
+  schemas:
+    Persona:
+      required:
+        - id
+        - nombre
+        - apellidos
+        - rfc
+        - curp
+        - edad
+        - sexo
+        - nacionalidad
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+        apellidos:
+          type: string
+        rfc:
+          type: string
+        curp:
+          type: string
+        edad:
+          type: integer
+          format: int32
+        sexo:
+          type: string
+        nacionalidad:
+          type: string
+      xml:
+        name: persona

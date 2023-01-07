@@ -7,6 +7,12 @@ import mx.examen.service.PersonaService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Implementación de la Interfaz de PersonaService
+ *
+ * A continuación, se crea esta clase concreta que es una implementación de la
+ * interfaz PersonaService.
+ */
 @Service("personaServiceImpl")
 public class PersonaServiceImpl implements PersonaService {
 
