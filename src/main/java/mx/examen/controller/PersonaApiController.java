@@ -33,6 +33,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import mx.examen.service.impl.PersonaServiceImpl;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-06T19:40:43.392Z[GMT]")
 @RestController
@@ -50,6 +52,9 @@ public class PersonaApiController implements PersonaApi {
         this.objectMapper = objectMapper;
         this.request = request;
     }
+
+    @org.springframework.beans.factory.annotation.Autowired
+    private PersonaServiceImpl personaServiceImpl;
 
     @Override
     public ResponseEntity<Persona> obtienePersonaPorId(@Parameter(in = ParameterIn.PATH, description = "El Id de persona retorna", required = true, schema = @Schema()) @PathVariable("personaId") Integer personaId) {
@@ -74,6 +79,23 @@ public class PersonaApiController implements PersonaApi {
         List<Persona> response = new ArrayList<>();
         if (accept != null && accept.contains("application/json")) {
             try {
+                List<mx.examen.model.Persona> listaDeUsuarios = this.personaServiceImpl.encontrarTodasLasPersonas();
+                List<Persona> listaDeUsuariosResponse = listaDeUsuarios
+                        .stream()
+                        .map(elemento -> {
+                            Persona personaResponse = new Persona();
+                            personaResponse.setId(elemento.getId());
+                            personaResponse.setNombre(elemento.getNombre());
+                            personaResponse.setApellidos(elemento.getApellidos());
+                            personaResponse.setRfc(elemento.getRfc());
+                            personaResponse.setCurp(elemento.getCurp());
+                            personaResponse.setEdad(elemento.getEdad());
+                            personaResponse.setSexo(elemento.getSexo());
+                            personaResponse.setNacionalidad(elemento.getNacionalidad());
+                            return personaResponse;
+                        })
+                        .collect(Collectors.toList());
+                response.addAll(listaDeUsuariosResponse);
                 String json = this.objectMapper.writeValueAsString(response);
                 return new ResponseEntity<List<Persona>>(this.objectMapper.readValue(json, List.class), HttpStatus.OK);
             } catch (IOException e) {
@@ -81,7 +103,7 @@ public class PersonaApiController implements PersonaApi {
                 return new ResponseEntity<List<Persona>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-
-        return new ResponseEntity<List<Persona>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<Persona>>(HttpStatus.OK);
     }
+
 }

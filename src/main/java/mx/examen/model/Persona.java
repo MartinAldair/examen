@@ -1,38 +1,32 @@
 package mx.examen.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 
-@Entity
-@Table(name = "persona")
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id; // se declara esta variable como ID de tipo Entero
 
-    @Column(name = "nombre")
+//    @Column(name = "nombre")
     private String nombre; // se declara esta variable como nombre de tipo String
 
-    @Column(name = "apellidos")
+//    @Column(name = "apellidos")
     private String apellidos; // se declara esta variable como apellidos de tipo String
 
-    @Column(name = "rfc")
+//    @Column(name = "rfc")
     private String rfc; // se declara esta variable como rfc de tipo String
 
-    @Column(name = "curp")
+//    @Column(name = "curp")
     private String curp;  // se declara esta variable como curp de tipo String
 
-    @Column(name = "edad")
+//    @Column(name = "edad")
     private Integer edad; // se declara esta variable como edad de tipo Entero
 
-    @Column(name = "sexo")
+//    @Column(name = "sexo")
     private String sexo; // se declara esta variable como sexo de tipo String
 
-    @Column(name = "nacionalidad")
+//    @Column(name = "nacionalidad")
     private String nacionalidad; // se declara esta variable como nacionalidad de tipo String
 
     /*
