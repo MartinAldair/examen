@@ -1,7 +1,10 @@
 package mx.examen;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
@@ -100,6 +103,22 @@ La cadena S consta únicamente de caracteres y espacios ASCII imprimibles.
         }
         System.out.println("Instrucción 2.");
         System.out.println("Instrucción 3, etc.");
+    }
+
+    /*
+    5.2	Dado el siguiente método, agregar el código necesario para que el método genere una excepción personalizada en caso de error.
+     */
+    public static Date getFecha(String fecha, String formato) {
+        SimpleDateFormat formatter = new SimpleDateFormat(formato);
+        String dateInString = fecha;
+        Date fechaSalida = null;
+        try {
+            fechaSalida = formatter.parse(dateInString);
+        } catch (ParseException e) {
+            LOGGER.error("Error" + e);
+        }
+
+        return fechaSalida;
     }
 
 }
