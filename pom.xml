@@ -27,6 +27,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- JUnit and Spring-Test for unit-testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

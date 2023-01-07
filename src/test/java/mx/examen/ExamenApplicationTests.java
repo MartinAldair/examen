@@ -1,10 +1,8 @@
 package mx.examen;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -132,7 +130,7 @@ La cadena S consta únicamente de caracteres y espacios ASCII imprimibles.
         String fechaFormatoCorrecto = "01/07/2023 12:04:59";
         String fechaFormatoIncorrecto = "a";
         String nuevoFormatoDeFecha = "MM/dd/yyyy";
-        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
+//        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
 
 }
