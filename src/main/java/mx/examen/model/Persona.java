@@ -1,5 +1,12 @@
 package mx.examen.model;
 
+/**
+ * DAO Pattern model Class
+ *
+ * El modelo de la clase Persona representa un objeto con la lógica de
+ * negocio, en la cual se utiliza para retener datos para transportarlos entre
+ * capas.
+ */
 import java.io.Serializable;
 
 public class Persona implements Serializable {

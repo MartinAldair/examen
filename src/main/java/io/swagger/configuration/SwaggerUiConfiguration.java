@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerUiConfiguration {
 
+    /**
+     * Publica un bean para generar endpoints de OpenApi UI 3.0
+     *
+     * @return La configuracion del bean de OpenApi UI 3.0
+     */
     @Bean
     public OpenAPI customOpenAPI() {
         Server localServer = new Server();
