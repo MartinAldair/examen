@@ -3,9 +3,8 @@ package mx.examen.model;
 /**
  * DAO Pattern model Class
  *
- * El modelo de la clase Persona representa un objeto con la lógica de
- * negocio, en la cual se utiliza para retener datos para transportarlos entre
- * capas.
+ * El modelo de la clase Persona representa un objeto con la lógica de negocio,
+ * en la cual se utiliza para retener datos para transportarlos entre capas.
  */
 import java.io.Serializable;
 
@@ -13,31 +12,27 @@ public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id; // se declara esta variable como ID de tipo Entero
+    /**
+     * Se agrega los campos con el tipo de datos privado
+     */
+    private Integer id;
 
-//    @Column(name = "nombre")
-    private String nombre; // se declara esta variable como nombre de tipo String
+    private String nombre;
 
-//    @Column(name = "apellidos")
-    private String apellidos; // se declara esta variable como apellidos de tipo String
+    private String apellidos;
 
-//    @Column(name = "rfc")
-    private String rfc; // se declara esta variable como rfc de tipo String
+    private String rfc;
 
-//    @Column(name = "curp")
-    private String curp;  // se declara esta variable como curp de tipo String
+    private String curp;
 
-//    @Column(name = "edad")
-    private Integer edad; // se declara esta variable como edad de tipo Entero
+    private Integer edad;
 
-//    @Column(name = "sexo")
-    private String sexo; // se declara esta variable como sexo de tipo String
+    private String sexo;
 
-//    @Column(name = "nacionalidad")
-    private String nacionalidad; // se declara esta variable como nacionalidad de tipo String
+    private String nacionalidad;
 
-    /*
-    Crea una instancia de persona.
+    /**
+     * Crea una instancia de persona.
      */
     public Persona(Integer id, String nombre, String apellidos, String rfc, String curp, Integer edad, String sexo, String nacionalidad) {
         this.id = id;
@@ -50,7 +45,9 @@ public class Persona implements Serializable {
         this.nacionalidad = nacionalidad;
     }
 
-    // Se agregan los getter y setter
+    /**
+     * Se agregan los getter y setter
+     */
     public Integer getId() {
         return id;
     }
@@ -115,6 +112,9 @@ public class Persona implements Serializable {
         this.nacionalidad = nacionalidad;
     }
 
+    /**
+     * Se crea el método toString().
+     */
     @Override
     public String toString() {
         return "Persona{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", rfc=" + rfc + ", curp=" + curp + ", edad=" + edad + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + '}';

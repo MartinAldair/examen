@@ -11,9 +11,17 @@ import mx.examen.model.Persona;
  */
 public interface PersonaDao {
 
+    /**
+     * Método para obtener una lista de personas
+     *
+     * @return retorna una lista de todas las personas que se encuentran en la
+     * capa DAO donde se simula la recuperación de la información
+     */
     public List<Persona> encontrarTodasLasPersonas();
 
     /**
+     * Método para buscar una persona por id
+     *
      * @param id id de persona.
      * @return si una persona con id <code>id</code> existe retorna su
      * informacion que se encuentra en la capa DAO donde se simula la
