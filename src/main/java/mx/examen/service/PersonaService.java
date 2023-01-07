@@ -5,10 +5,8 @@ import mx.examen.model.Persona;
 
 public interface PersonaService {
 
-    Persona guardarPersona(Persona persona);
-
     Persona encontrarPersonaPorId(Integer id);
 
-    List<Persona> encontrarTodosLasPersonas();
+    List<Persona> encontrarTodasLasPersonas();
 
 }
