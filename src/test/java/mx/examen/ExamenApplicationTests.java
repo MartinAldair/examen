@@ -1,12 +1,15 @@
 package mx.examen;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mx.examen.support.MiExcepcionPersonalizada;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,7 +109,8 @@ La cadena S consta únicamente de caracteres y espacios ASCII imprimibles.
     }
 
     /*
-    5.2	Dado el siguiente método, agregar el código necesario para que el método genere una excepción personalizada en caso de error.
+    5.2	Dado el siguiente método, agregar el código necesario para que el método 
+    genere una excepción personalizada en caso de error.
      */
     public static Date getFecha(String fecha, String formato) {
         SimpleDateFormat formatter = new SimpleDateFormat(formato);
@@ -115,10 +119,20 @@ La cadena S consta únicamente de caracteres y espacios ASCII imprimibles.
         try {
             fechaSalida = formatter.parse(dateInString);
         } catch (ParseException e) {
-            LOGGER.error("Error" + e);
+            /* En la clase MiExcepcionPersonalizada se explica a detalle la
+            implementacion personalizada de una excepcion*/
+            throw new MiExcepcionPersonalizada("A message that describes the error.");
         }
 
         return fechaSalida;
+    }
+
+    @Test
+    void ejercicio5_2() {
+        String fechaFormatoCorrecto = "01/07/2023 12:04:59";
+        String fechaFormatoIncorrecto = "a";
+        String nuevoFormatoDeFecha = "MM/dd/yyyy";
+        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
 
 }
