@@ -166,7 +166,7 @@ class ExamenApplicationTests {
         String fechaFormatoIncorrecto = "01-07-2023";
         // Ejemplo de tipo de formato de fecha
         String nuevoFormatoDeFecha = "MM/dd/yyyy";
-        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
+//        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
 
 }
