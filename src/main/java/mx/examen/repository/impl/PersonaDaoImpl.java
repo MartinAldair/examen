@@ -6,6 +6,12 @@ import mx.examen.model.Persona;
 import mx.examen.repository.PersonaDao;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Implementación del patrón DAO
+ *
+ * A continuación, se crea esta clase concreta que es una implementación de la
+ * interfaz BookDao.
+ */
 @Repository("personaDaoImpl")
 public class PersonaDaoImpl implements PersonaDao {
 
