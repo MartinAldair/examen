@@ -22,6 +22,7 @@ public class ExamenApplication implements CommandLineRunner {
         }
     }
 
+    // Declaración del método principal
     public static void main(String[] args) {
         SpringApplication.run(ExamenApplication.class, args);
     }

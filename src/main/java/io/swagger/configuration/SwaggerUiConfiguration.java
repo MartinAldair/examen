@@ -8,14 +8,20 @@ import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * OpenAPI Swagger-UI configuración del bean.
+ *
+ * @see https://swagger.io/specification/
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-06T19:40:43.392Z[GMT]")
 @Configuration
 public class SwaggerUiConfiguration {
 
     /**
-     * Publica un bean para generar endpoints de OpenApi UI 3.0
      *
-     * @return La configuracion del bean de OpenApi UI 3.0
+     * OpenAPI Swagger-UI configuración.
+     *
+     * @return -
      */
     @Bean
     public OpenAPI customOpenAPI() {
@@ -29,6 +35,12 @@ public class SwaggerUiConfiguration {
         return openAPI;
     }
 
+    /**
+     *
+     * OpenAPI info() configuración.
+     *
+     * @return -
+     */
     private Info info() {
         return new Info()
                 .title("Examen - OpenAPI 3.0")
@@ -49,6 +61,12 @@ public class SwaggerUiConfiguration {
                 .url("http://examen.mx");
     }
 
+    /**
+     *
+     * OpenAPI apiGroup() configuración.
+     *
+     * @return -
+     */
     @Bean
     public GroupedOpenApi apiGroup() {
         String[] paths = {"/persona/**"};

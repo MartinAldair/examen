@@ -32,7 +32,15 @@ public class Persona implements Serializable {
     private String nacionalidad;
 
     /**
-     * Crea una instancia de persona.
+     * Constructor con 8 parametros
+     *
+     * @param id identificador unico de la persona
+     * @param nombre nombre de la persona
+     * @param apellidos apellidos de la persona
+     * @param rfc rfc de la persona
+     * @param edad edad de la persona
+     * @param sexo sexo del empleado
+     * * @param nacionalidad nacionalidad de la persona
      */
     public Persona(Integer id, String nombre, String apellidos, String rfc, String curp, Integer edad, String sexo, String nacionalidad) {
         this.id = id;
@@ -43,7 +51,7 @@ public class Persona implements Serializable {
         this.edad = edad;
         this.sexo = sexo;
         this.nacionalidad = nacionalidad;
-    }
+    } // Cierre del constructor
 
     /**
      * Se agregan los getter y setter
