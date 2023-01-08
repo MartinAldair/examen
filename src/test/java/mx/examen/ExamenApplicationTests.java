@@ -20,21 +20,27 @@ class ExamenApplicationTests {
 
     /**
      * 3. Supone que debes establecer una contraseña para una cuenta bancaria.
-     * Sin embargo, hay tres restricciones en el formato de la contraseña: a)
-     * Debe contener solo caracteres alfanuméricos (a−z, A−Z, 0−9); b) Debe
-     * haber un número par de letras; c) Debe haber un número impar de dígitos.
+     * Sin embargo, hay tres restricciones en el formato de la contraseña: 
+     * 
+     * a) Debe contener solo caracteres alfanuméricos (a−z, A−Z, 0−9);
+     * b) Debe haber un número par de letras;
+     * c) Debe haber un número impar de dígitos.
      *
      * En la variable se define las 3 restricciones para que sea valida el
      * formato de la contraseña. Explicacion del contenido de la variable
-     * pattern: ^ Indica el principio de una cadena ( Indica el principio del
-     * agrupamiento de parte de una expresión [ Indica el principio del conjunto
-     * de caracteres de la expresión BDFHJLNPRTVXZbdfhjlnprtvxz?13579 Este
-     * conjunto de cadena de caracteres indica las condiciones de los incisos a)
-     * b) y c) \\s Indica que coincide con un solo carácter de espacio en blanco
-     * ] Indica el final del conjunto de caracteres de la expresión {1,200}
-     * Indica un número o intervalo de longitud de la expresión ( Indica el
-     * final del agrupamiento de parte de una expresión $ Indica el final de una
-     * cadena
+     * pattern:
+     *
+     * ^ Indica el principio de una cadena
+     * ( Indica el principio del agrupamiento de parte de una expresión
+     * [ Indica el principio del conjunto de caracteres de la expresión
+     * BDFHJLNPRTVXZbdfhjlnprtvxz?13579 Este conjunto de cadena de caracteres
+     * indica las condiciones de los incisos a) b) y c)
+     * \\s Indica que coincide con un solo carácter de espacio en blanco
+     * ] Indica el final del conjunto de caracteres de la expresión
+     * {1,200} Indica un número o intervalo de longitud de la expresión
+     * ( Indica el final del agrupamiento de parte de una expresión $ Indica el
+     * final de una cadena
+     * 
      */
     String pattern = "^([BDFHJLNPRTVXZbdfhjlnprtvxz?13579\\s]{1,200})$";
     String text1 = "test 5 a0A pass007 ?xy1";
@@ -61,17 +67,37 @@ class ExamenApplicationTests {
      * N es un número entero dentro del rango [1..200]; La cadena S consta
      * únicamente de caracteres y espacios ASCII imprimibles.
      *
+     * @see
+     * https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
      */
     @Test
     void ejercicio3() {
+        /**
+         * Compila la expresión regular dada en un patrón con las banderas
+         * (flags) dadas.
+         */
         Pattern p = Pattern.compile(pattern);
+        /**
+         * Crea un comparador con el dato ingresado con este patrón.
+         */
         Matcher m = p.matcher(text2);
+        /**
+         * En este metodo mediante su algoritmo intenta coincidir el dato
+         * ingresado y la expresión regular dada en un patrón. Si la
+         * coincidencia tiene éxito, se obtiene un dato de tipo primitivo
+         * verdadero (true), en caso contrario es falso (false).
+         */
         Boolean b = m.matches();
         if (!b) {
             log.info("La contraseña no cumple con el patron de requisitos para ser valida" + b);
         } else {
             String[] password = m.group().split(" ");
+            // Mediante el metodo stream.max() obtiene el dato de tipo string mas 
+            // largo por tamaño del arreglo de cadena de caracteres (Array of strings)
             String longestPassword = Arrays.asList(password).stream().max(Comparator.comparingInt(String::length)).get();
+            // La condicion de abajo determina si una contraseña con mas 
+            // caracteres es valida o no, porque depende por el tamaño (leght) si
+            // mayor a 0 entonces es valida, en caso contrario no.
             Integer passwordLeght = longestPassword.length() > 0 ? 0 : -1;
             if (passwordLeght.equals(0)) {
                 log.info("Contraseña: " + longestPassword);
@@ -82,8 +108,10 @@ class ExamenApplicationTests {
     }
 
     /**
-     * 5.	Manejo de Errores 5.1	Dado la siguiente clase agrega el manejo de
-     * errores correspondientes y justifica él porque
+     * 5.Manejo de Errores
+     *
+     * 5.1 Dado la siguiente clase agrega el manejo de errores correspondientes
+     * y justifica él porque
      */
     @Test
     void ejercicio5_1() {
@@ -106,7 +134,10 @@ class ExamenApplicationTests {
     }
 
     /**
-     * 5.2	Dado el siguiente método, agregar el código necesario para que el
+     *
+     * 5.Manejo de Errores
+     *
+     * 5.2 Dado el siguiente método, agregar el código necesario para que el
      * método genere una excepción personalizada en caso de error.
      */
     public static Date getFecha(String fecha, String formato) {
@@ -120,7 +151,8 @@ class ExamenApplicationTests {
              * En la clase MiExcepcionPersonalizada se explica a detalle la
              * implementacion personalizada de una excepcion
              */
-            throw new MiExcepcionPersonalizada("A message that describes the error.");
+            throw new MiExcepcionPersonalizada("Mensaje personalizado que "
+                    + "describe el error.");
         }
 
         return fechaSalida;
@@ -128,8 +160,11 @@ class ExamenApplicationTests {
 
     @Test
     void ejercicio5_2() {
+        // Fecha con formato valido
         String fechaFormatoCorrecto = "01/07/2023 12:04:59";
-        String fechaFormatoIncorrecto = "a";
+        // Fecha con formato invalido
+        String fechaFormatoIncorrecto = "01-07-2023";
+        // Ejemplo de tipo de formato de fecha
         String nuevoFormatoDeFecha = "MM/dd/yyyy";
         getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
