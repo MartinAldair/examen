@@ -108,6 +108,42 @@ class ExamenApplicationTests {
     }
 
     /**
+    * 4. Se está organizando un torneo de tenis. Los jugadores P, que
+    * participarán en la primera ronda de este torneo, ya están registrados y
+    * tienes reservadas las canchas de tenis C para los partidos. Exactamente
+    * dos jugadores juegan en cada juego y solo se puede jugar un juego en cada
+    * cancha en un momento dado. Desea albergar la mayor cantidad posible de
+    * juegos que comiencen al mismo tiempo (para terminar la primera ronda
+    * rápidamente).
+    *
+    * ¿Cuántos juegos se pueden alojar en paralelo simultáneamente?
+    *
+    * Respuesta: Se consideran 3 juegos simultaneos en paralelo porque del
+    * ejemplo indica que solo se cuenta con 3 canchas solamente por jugar.
+    *
+    * Escribe una clase que, dado el número de jugadores P y el número de
+    * canchas reservadas C, devuelve el número máximo de juegos que se pueden
+    * jugar en paralelo
+    *
+    * Ejemplo: Dado P = 10 jugadores y C = 3 canchas, la función debería
+    * devolver 3.Como máximo, se pueden organizar tres juegos en paralelo.
+    *
+    * El ejemplo indica que solo se pueden llevar a cabo 1 partido en cada
+    * cancha, por lo tanto la desigualdad al no cumplirse, toma el valor de C
+    * que indica el numero de eventos maximo N. A continuacion se expresa en una
+    * función el argumento anterior.
+    *
+    * N = P / 2 <= C
+    * 
+    * Sustituyendo los valores
+    * 
+    * N = 10 / 2 <= 3
+    * 
+    * Se toma el valor que se puede realizar 5 juegos y como solo hay 3 canchas
+    * por lo tanto el numero de eventos es igual al numero de canchas
+    */
+
+    /**
      * 5.Manejo de Errores
      *
      * 5.1 Dado la siguiente clase agrega el manejo de errores correspondientes
@@ -166,6 +202,7 @@ class ExamenApplicationTests {
         String fechaFormatoIncorrecto = "01-07-2023";
         // Ejemplo de tipo de formato de fecha
         String nuevoFormatoDeFecha = "MM/dd/yyyy";
+        /* Desmarcar la linea siguiente para ejecutar el metodo de getFecha() */
 //        getFecha(fechaFormatoIncorrecto, nuevoFormatoDeFecha);
     }
 
